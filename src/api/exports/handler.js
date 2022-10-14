@@ -17,14 +17,14 @@ class ExportsHandler {
 
     await this._playlistsService.verifyPlaylistAccess(playlistId, userId);
     await this._producerService.sendMessage(
-      "export:playlist",
-      JSON.stringify(message)
+      'export:playlist',
+      JSON.stringify(message),
     );
 
     return h
       .response({
-        status: "success",
-        message: "Permintaan Anda sedang kami proses",
+        status: 'success',
+        message: 'Permintaan Anda sedang kami proses',
       })
       .code(201);
   }

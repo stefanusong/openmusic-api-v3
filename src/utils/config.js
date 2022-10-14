@@ -17,6 +17,11 @@ const config = {
   redis: {
     host: process.env.REDIS_SERVER,
   },
+  storage: {
+    path: process.env.UPLOAD_DIR
+      ? process.env.UPLOAD_DIR
+      : 'public/images/album',
+  },
 };
 
 module.exports = config;

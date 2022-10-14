@@ -1,4 +1,5 @@
-const fs = require("fs");
+const fs = require('fs');
+const { nanoid } = require('nanoid');
 
 class StorageService {
   constructor(folder) {
@@ -9,15 +10,15 @@ class StorageService {
   }
 
   writeFile(file, meta) {
-    const filename = +new Date() + meta.filename;
+    const filename = `cover-${nanoid(12)}${meta.filename}`;
     const path = `${this._folder}/${filename}`;
 
     const fileStream = fs.createWriteStream(path);
 
     return new Promise((resolve, reject) => {
-      fileStream.on("error", (error) => reject(error));
+      fileStream.on('error', (error) => reject(error));
       file.pipe(fileStream);
-      file.on("end", () => resolve(filename));
+      file.on('end', () => resolve(filename));
     });
   }
 }

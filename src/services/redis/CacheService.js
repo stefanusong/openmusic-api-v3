@@ -1,5 +1,5 @@
-const redis = require("redis");
-const config = require("./../../utils/config");
+const redis = require('redis');
+const config = require('../../utils/config');
 
 class CacheService {
   constructor() {
@@ -9,7 +9,7 @@ class CacheService {
       },
     });
 
-    this._client.on("error", (error) => {
+    this._client.on('error', (error) => {
       console.error(error);
     });
 
@@ -24,7 +24,7 @@ class CacheService {
 
   async get(key) {
     const result = await this._client.get(key);
-    if (result === null) throw new Error("Cache is not found");
+    if (result === null) throw new Error('Cache is not found');
     return result;
   }
 
